@@ -1,0 +1,403 @@
+/*
+ Theme Name:   Löydä tekijä bootstrap
+ Theme URI:    http://samk.fi
+ Description:  Löydä tekijä bootstrap
+ Author:       Peter Virtanen
+ Author URI:   http://getsome.fi
+ Template:     wp-bootstrap-starter
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         rekry
+ Text Domain:  beat-child
+*/
+
+/*
+color scheme Muted and minimal (toned)
+white #FFF;
+black #4e4e4e;
+dusty(light brown+purple) #95838d;
+lavendat(gray with hint of purple) #6e7992;
+overcast(dark gray) #8f99a1;
+paper(light gray) #d5d5d5;
+*/
+
+.um-page-user h1.entry-title {
+    font-size: 40px;
+    border-bottom: 0px solid #eaecef;
+    text-align: center;
+    font-weight: bold;
+    color: #444444;
+    margin-bottom: 40px;
+}
+img.samk-logo {
+    height: 100px;
+    opacity: 0.8;
+	-webkit-transition: all .2s linear;
+	transition: all .2s linear;
+}
+header#masthead1 {
+    background-color: #6e7992;
+    box-shadow: none;
+    height: 4rem;
+    line-height: 3rem;
+}
+header#masthead1 .navbar-nav > li > a {
+    color: #ffffff;
+    padding: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+footer{
+    background-color: #d5d5d5;
+}
+footer *{
+    color: #424240;
+    text-decoration: none !important;
+}
+nav.navbar {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+p {
+    max-width: 760px;
+    margin: auto;
+}
+
+/*
+footer:hover img.samk-logo{
+	opacity: 1;
+}
+*/
+
+footer .site-info > div {
+    display: inline-block;
+    top: 22px;
+    position: relative;
+    font-size: 16px;
+}
+
+/*user page header to full width*/
+body div.um-10.um {
+    max-width: 100%;
+}
+body div.um-cover {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+#all-jobs-list .panel-heading button {
+    min-height: 200px;
+    background: #f7f7f7;
+    outline: none;
+    border: none;
+    padding: 15px 30px;
+}
+#all-jobs-list .panel-heading button .alert h5 {
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+/*system basics*/
+.equal-heights {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+h1, h1.entry-title {
+    color: #4e4e4e;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4em;
+    border:0px solid #eaecef;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.um-page-user h1{
+    padding-top: 0px;
+}
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: -20px;
+    color: #6e7992;
+    margin-bottom: 20px;
+}
+.h3, h3 {
+    font-size: 1.25rem;
+}
+p {
+    color: #4e4e4e;
+    font-size: 1.2em;
+}
+
+/*bs default override*/
+.alert {
+    border: 0px solid transparent;
+    border-radius: 0;
+}
+.alert .fa-check {
+    font-size: 35px;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    background: white;
+    padding: 8px;
+    border-radius: 100%;
+}
+
+/*avattu bs accordion*/
+/*
+Skeidaa
+.collapse.show {
+    display: block;
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    top: 50%;
+    z-index: 10;
+    background: #FFF;
+    max-width: 720px;
+    margin: auto;
+    right: 0px;
+    padding: 30px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+*/
+#all-jobs-list .panel-heading button {
+    min-height: 200px;
+    background: #95838d;
+    outline: none;
+    border: none;
+    padding: 15px 30px;
+    width: 100%;
+    margin-bottom: 15px;
+    color: #FFF;
+}
+
+.panel-body .panel-link{
+    overflow: hidden;
+}
+
+/*basic black button style*/
+.panel-body .panel-link a,
+a.beat-edit-button{
+    background: #4e4e4e;
+    padding: 15px 30px;
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #FFF;
+    text-transform: uppercase;
+    text-decoration: none !important;
+}
+
+#page-sub-header1 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-size: cover;
+    background-position: center;
+}
+.site-desc-front {
+    background: #ffffffa7;
+    padding: 3rem;
+}
+.site-desc-front-links {
+    margin-top: 30px;
+    margin-bottom: -15px;
+}
+
+.block-link-holder {
+    margin-bottom: 30px;
+}
+.site-desc-front-links .block-link-holder a {
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+      
+    background-color: rgba(149, 131, 141, 0.8);
+    display: block;
+    height: 100%;
+    padding: 30px;
+    text-decoration: none;
+}
+
+body .site-desc-front-links .block-link-holder a strong {
+    color: #FFF;
+}
+body .site-desc-front-links .block-link-holder a p {
+    color: #efefef;
+    text-align: center;
+}
+
+.site-desc-front-links .block-link-holder a:hover{
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+}
+.site-desc-front-links .employer-holder a{
+    background-color: rgba(110, 121, 146, 0.7);
+}
+.site-desc-front-links  .readmore-holder a {
+    background-color: rgba(143, 153, 161, 0.7);
+}
+
+.site-desc-front-desc-text {
+    font-size: 1em;
+    text-align: center;
+    max-width: 760px;
+    margin: auto;
+}
+
+/*um mods*/
+body .um .um-form input[type=text], 
+body .um .um-form input[type=tel], 
+body .um .um-form input[type=number], 
+body .um .um-form input[type=password], 
+body .um .um-form textarea{
+    border-radius: 0px;
+}
+
+.page-content, .entry-content, .entry-summary {
+    margin: 0;
+}
+#content.site-content {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.um-header {
+    padding: 15px 0px !important;
+    border-bottom: solid 0px #eee !important;
+}
+.um-name{
+    line-height: 5rem !important;
+}
+.um-page-user header.entry-header {
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    width: 670px;
+    background: rgba(255, 255, 255, 0.7);
+    margin: auto;
+    padding: 4rem;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    margin-top: 4rem;
+}
+.um-page-user h1.entry-title {
+    font-size: 3rem;
+    border-bottom: 0px solid #eaecef;
+    text-align: center;
+    font-weight: bold;
+    color: #444444;
+    margin-bottom: 0px;
+    padding-bottom: 0;
+}
+.um-profile-nav {
+    padding: 15px !important;
+    background-color: #6e7891 !important;
+}
+.um-10.um .um-field-group-head, .picker__box, .picker__nav--prev:hover, .picker__nav--next:hover, .um-10.um .um-members-pagi span.current, .um-10.um .um-members-pagi span.current:hover, .um-10.um .um-profile-nav-item.active a, .um-10.um .um-profile-nav-item.active a:hover, .upload, .um-modal-header, .um-modal-btn, .um-modal-btn.disabled, .um-modal-btn.disabled:hover, div.uimob800 .um-account-side li a.current, div.uimob800 .um-account-side li a.current:hover {
+    background: #FFF !important;
+    color: #4e4e4e !important;
+    border-radius: 0px !important;
+}
+.um-10.um input[type=submit].um-button, .um-10.um input[type=submit].um-button:focus, .um-10.um a.um-button, .um-10.um a.um-button.um-disabled:hover, .um-10.um a.um-button.um-disabled:focus, .um-10.um a.um-button.um-disabled:active,
+.um-um_account_id.um input[type=submit].um-button, .um-um_account_id.um input[type=submit].um-button:focus, .um-um_account_id.um a.um-button, .um-um_account_id.um a.um-button.um-disabled:hover, .um-um_account_id.um a.um-button.um-disabled:focus, .um-um_account_id.um a.um-button.um-disabled:active,
+.um-85.um input[type=submit].um-button, .um-85.um input[type=submit].um-button:focus, .um-85.um a.um-button, .um-85.um a.um-button.um-disabled:hover, .um-85.um a.um-button.um-disabled:focus, .um-85.um a.um-button.um-disabled:active{
+    background: #4e4e4e !important;
+    color: #FFF !important;
+    border-radius: 0px !important;
+    border: none !important;
+    font-weight: bold !important; 
+}
+.um-85.um .um-button.um-alt, .um-85.um input[type=submit].um-button.um-alt {
+    background: #6e7992 !important;
+}
+
+.post-navigation .nav-previous a, .post-navigation .nav-next a {
+    background: #4e4e4e;
+    color: #FFF;
+    border-radius: 0px;
+    border: none;
+    font-weight: normal;
+    padding: 16px 20px;
+    line-height: 0.95rem;
+}
+.post-navigation .nav-previous a::before {
+    margin-right: 10px;
+}
+.post-navigation .nav-next a::before {
+    margin-right: 10px;
+}
+
+/*ilmoitus firma*/
+.more-info-parent {
+    position: relative;
+    background-size: cover;
+    overflow: hidden;
+}
+.more-info-avatar {
+    border-radius: 100%;
+    overflow: hidden;
+    height: 160px;
+    width: 160px;
+    margin: 30px auto;
+    position: relative;
+}
+.more-info-name {
+    padding-top: 4em;
+    padding-bottom: 2em;
+}
+.more-info-name h3 {
+    text-align: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #4e4e4e;
+}
+#author-section-right {
+    background: #d5d5d53d;
+}
+#author-section-right p {
+    margin-top: 30px;
+}
+
+.um-page-user header.entry-header {
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    width: 670px;
+    background: rgba(255, 255, 255, 0.7);
+    margin: auto;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/*edit panel (um override included)*/
+.beat-functionality-panel {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 0px 15px;
+    z-index: 1;
+}
+
+.um-profile-edit {
+    top: 31px !important;
+    right: 30px !important;
+    line-height: 12px !important;
+    height: 20px !important;
+    z-index: 66;
+    padding: 10px;
+}
+.um-profile-edit i {
+    font-size: 20px !important;
+}
+.um-register {
+    margin-top: 30px;
+}
