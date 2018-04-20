@@ -16,14 +16,14 @@
 	</div><!-- #content -->
     <?php get_template_part( 'footer-widget' ); ?>
 	<footer id="colophon1" class="site-footer <?php echo wp_bootstrap_starter_bg_class(); ?>" role="contentinfo">
-		<div class="container-fluid p-3 p-md-5">
+		<div class="container">
             <div class="site-info">
             	<div>
 	                &copy; <?php echo date('Y'); ?> <?php echo '<a href="'.home_url().'">'.get_bloginfo('name').'</a>'; ?>
 	                <span class="sep"> | </span>
 	            </div>
                 <a class="credits" href="https://samk.fi" target="_blank" title="Samk.fi" alt="Samk">
-                	<img class="samk-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/img/samk_logo_musta.png">
+                	<img class="samk-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/img/samk_logo_musta.png" alt="Samk Oy">
                 </a>
 
             </div><!-- close .site-info -->

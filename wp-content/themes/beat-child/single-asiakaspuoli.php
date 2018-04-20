@@ -16,7 +16,64 @@ get_header(); ?>
 
 					get_template_part( 'template-parts/content', get_post_format() );
 
-					    the_post_navigation();
+					//the_post_navigation();
+					
+					
+						$args = array( 
+							'post_type' => 'asiakaspuoli',
+							//'category' => 6, 
+
+							
+							'posts_per_page' => 20, 
+							'meta_key'       => 'haku_loppuu',
+							'order'          => 'ASC',
+							'orderby'       => 'meta_value',
+							'no_found_rows'  => true,
+							'meta_query'     => array(array(
+							  'key'    => 'haku_loppuu',
+							  'value'  => date('Ymd', strtotime("-1 week")),
+							  'compare'=> '>=',
+							  'type'   => 'NUMERIC'
+							))
+							
+						);
+						$q = new WP_Query( $args );
+						//$q = $q->posts;
+	 					//print_r($q);
+
+	 					
+	 					$pid = get_the_ID();
+	 					/*
+	 					echo "<p>" . $pid . "</p>";
+	 					foreach ($q as $key => $value) {
+	 						echo "<p>" . $key ."=>". $value . "</p>";
+	 					}
+	 					*/
+
+	 					$id_list = array();
+						while($q->have_posts()) : $q->the_post();
+							$id_list[] = get_the_ID();
+						endwhile;
+						wp_reset_postdata(); // reset the query
+
+						//print_r($id_list);
+						$cur_pos = array_search($pid,$id_list);
+						//echo "<br>";
+						//echo $cur_pos;
+						//echo "<br>";
+
+						if( $cur_pos-1 >= 0 ){
+							echo "<a class='beat-general-link' href='" . get_the_permalink( $id_list[$cur_pos-1] ) . "' title='" . get_the_title( $id_list[$cur_pos-1] ) . "'>";
+								echo get_the_title( $id_list[$cur_pos-1] );
+							echo "</a>";
+						}
+
+						if( $cur_pos+1 < sizeof($id_list) ){
+							echo "<a class='beat-general-link beat-on-right' href='" . get_the_permalink( $id_list[$cur_pos+1] ) . "' title='" . get_the_title( $id_list[$cur_pos+1] ) . "'>";
+								echo get_the_title( $id_list[$cur_pos+1] );
+							echo "</a>";
+						}
+	 						 				
 
 					// If comments are open or we have at least one comment, load up the comment template.
 					if ( comments_open() || get_comments_number() ) :

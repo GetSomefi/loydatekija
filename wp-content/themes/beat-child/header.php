@@ -17,7 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-    <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/fontawesome-free-5.0.8/fontawesome.js"></script>
+    <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/fontawesome-free-5.0.10/fontawesome.js"></script>
 <?php wp_head(); ?>
 </head>
 
@@ -71,31 +71,31 @@
                     </h2>
                     <div class="site-desc-front-desc-text">
                         <p>
-                            Oletko hakemassa osaajaa vai olet ehkä osaaja ilman haasteita?<br />
-                            Löydä osaaja on Satakunnan ammattikorkeakoulun hallinnoima rekrykanava, joka yhdistää tekijät,osaajat ja työnantajat.
+                            <?php _e("Oletko hakemassa osaajaa vai olet ehkä osaaja ilman haasteita?<br />
+                            Löydä osaaja on Satakunnan ammattikorkeakoulun hallinnoima rekrykanava, joka yhdistää tekijät,osaajat ja työnantajat.","sivun-paa-mainosteksti-1"); ?>
                         </p>
                         <p>
-                           <strong>Liity rohkeasti osaajiin ja rekisteröidy.</strong>
+                           <strong><?php _e("Liity rohkeasti osaajiin ja rekisteröidy.","liity-rohkeasti-osaajiin-ja-rekisteroidy"); ?></strong>
                         </p>             
                     </div>
 
                     <div class="row site-desc-front-links equal-heights">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 employee-holder block-link-holder">
                             <a href="<?php echo get_permalink(76); ?>" aria-label="Rekisteröidy tästä osaajaksi">
-                                <p><strong>Oletko osaaja?</strong></p>
-                                <p>Rekisteröidy palveluun ja kesätyö- tai harjoittelupaikka on askeleen lähempänä</p>
+                                <p><strong><?php _e("Oletko osaaja?","oletko-osaaja"); ?></strong></p>
+                                <p><?php _e("Rekisteröidy palveluun ja kesätyö- tai harjoittelupaikka on askeleen lähempänä","rekisteroidy-mainos-teksti-1"); ?></p>
                             </a>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 employer-holder block-link-holder">
                             <a href="<?php echo get_permalink(80); ?>" aria-label="Rekisteröidy tästä työnantajaksi palveluun">
-                                <p><strong>Oletko työnantaja?</strong></p>
-                                <p>Rekisteröidy palveluun ja löydä osaaja</p>
+                                <p><strong><?php _e("Oletko työnantaja?","oletko-tyonantaja"); ?></strong></p>
+                                <p><?php _e("Rekisteröidy palveluun ja löydä osaaja","rekisteroidy-palveluun-ja-loyda-osaaja"); ?></p>
                             </a>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 readmore-holder block-link-holder">
                             <a href="#content" aria-label="Lue lisää tästä palvelusta">
-                                <p><strong>Mikä on Löydä osaaja?</strong></p>
-                                <p>Tutustu palveluumme</p>
+                                <p><strong><?php _e("Mikä on Löydä osaaja?","mika-on-loyda-osaaja"); ?></strong></p>
+                                <p><?php _e("Tutustu palveluumme","tutustu-palveluumme"); ?></p>
                             </a>
                         </div>
                     </div>

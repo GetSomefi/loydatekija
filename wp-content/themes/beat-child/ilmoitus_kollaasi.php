@@ -15,9 +15,8 @@ div#ww {
 
 <div id="ww">
     <div class="container">
-      <div>
-
-          <div>
+      <main id="content">
+          <header>
             <h1>
               <?php echo get_the_title(); ?>
             </h1>
@@ -30,17 +29,22 @@ div#ww {
             if( $user->exists() ):
             ?>
             <h3>
-              Moikka <?php echo wp_get_current_user()->user_login; ?>,<br />
-              Alla näet uusimmat ilmoitukset työ- ja harjoittelupaikoista.
+              <?php 
+              $u = wp_get_current_user();
+              if(in_array('opiskelija', $u->roles)):
+              ?>
+                <?php _e("Moikka","moikka"); ?> <?php echo wp_get_current_user()->user_login; ?>,<br />
+                <?php _e("Alla näet uusimmat ilmoitukset työ- ja harjoittelupaikoista.","ohjeteksti-ilmoituksista"); ?>
+              <?php endif; ?>
             </h3>
             <p>
-              Tänään on <?php echo $date_now; ?>, viikko <?php echo $week_now; ?>    
+              <?php echo _e("Tänään on","tanaan-on"); ?> <?php echo $date_now; ?>, <?php echo _e("viikko","viikko"); ?> <?php echo $week_now; ?>    
             </p>
             <?php
             endif;
             ?>
-          </div>
-          <div class="panel-group" id="all-jobs-list" role="tablist" aria-multiselectable="true">
+          </header>
+          <section aria-label="Sisältää kaikki avoimet haut" class="panel-group" id="all-jobs-list" role="tablist" aria-multiselectable="true">
             <div class="row">
             <?php
               $args = array( 
@@ -67,6 +71,10 @@ div#ww {
               <?php while ( $query->have_posts() ) : $query->the_post(); ?>
                 <?php $i++; ?>  
                 <?php
+                  $authorID = get_the_author_meta( 'ID' );
+                  um_fetch_user( $authorID );
+                  $user_name = get_the_author($authorID);
+
                   $format_in = 'Ymd'; // the format your value is saved in (set in the field options)
                   $format_out = 'd.m.Y'; // the format you want to end up with
                   $format_out_week = 'W'; // the format you want to end up with
@@ -91,13 +99,69 @@ div#ww {
 
                   $datediff = floor($datediff / (60 * 60 * 24)) + 1;
                 ?>
+                <?php
+                //print_r( get_field("ala_johon_ilmoitus_on_suunnattu") );
 
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                $branches = implode(",",get_field("ala_johon_ilmoitus_on_suunnattu"));
+                $data_attributes =    "data-workbranch='".$branches."' ";
+                $data_attributes .=   "data-worktype='".get_field("tyon_tyyppi")."' ";
+
+                if( in_array("Tekniikka", get_field("ala_johon_ilmoitus_on_suunnattu")) ){
+                  $branches_technical = implode(",",get_field("tekniikan_kategoriat"));
+                  $data_attributes .=   "data-worktype-technical='".$branches_technical."' ";
+                }
+
+                $data_attributes .= "aria-label='Ilmoituksen jättäjä ".$user_name.", Työn on " . get_field("palkkaus") . "' ";
+
+                $salary_type_icon = "<div class='beat-salary-type-icon'>";
+                $data_attributes .=   "data-salary-type='".get_field("palkkaus")."' ";
+                if( get_field("palkkaus") == "Palkaton" ){
+                  $salary_type_icon .= "<span class='beat-salary-type-unpayed'><i class='fas fa-euro-sign'></i></span>";
+                }else{
+                  $salary_type_icon .= "<span><i class='fas fa-euro-sign'></i></span>";
+                }
+                $salary_type_icon .= "</div>";
+                ?>
+                <?php
+                
+                $branch_type_icon = "";
+                if( in_array("Tekniikka", get_field("ala_johon_ilmoitus_on_suunnattu")) ){
+                $branch_type_icon .= "<div class='beat-branch-type-icon branch-tech'>";
+                  $branch_type_icon .= "<span><i class='fas fa-laptop'></i></span>";
+                $branch_type_icon .= "</div>";
+                }
+                if( in_array("Palveluliiketoiminta", get_field("ala_johon_ilmoitus_on_suunnattu")) ){
+                $branch_type_icon .= "<div class='beat-branch-type-icon branch-business'>";
+                  $branch_type_icon .= "<span><i class='fas fa-chart-line'></i></span>";
+                $branch_type_icon .= "</div>";
+                }
+                if( in_array("Sosiaali- ja teveysala", get_field("ala_johon_ilmoitus_on_suunnattu")) ){
+                $branch_type_icon .= "<div class='beat-branch-type-icon branch-medical'>";
+                  $branch_type_icon .= "<span><i class='fas fa-notes-medical'></i></span>";
+                $branch_type_icon .= "</div>";
+                }
+                
+                ?>
+
+                <div <?php echo $data_attributes; ?> class="col-xs-12 col-sm-6 col-md-6">
                   <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="heading-<?php echo $i; ?>">
                       <div class="panel-title">
+                        <?php echo $salary_type_icon . $branch_type_icon; ?>
                         <button class="title-button" role="button" data-toggle="collapse" data-parent="#cal-accordion" href="#collapse-<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $i; ?>">
-                          
+                          <div class="beat-company-info">
+                            <?php
+                            $avatar = um_get_avatar_uri( um_profile('profile_photo'), 120 );
+        
+                            echo "<div class='more-company-info' style='background-image:url(".$cover_uri.")'>";
+                              echo "<div class='more-company-info-avatar'>";
+                                echo "<div>";
+                                  echo "<img src='" . $avatar . "'  alt='". $user_name ."'>";
+                                echo "</div>";
+                              echo "</div>";
+                            echo "</div>";
+                            ?>
+                          </div>
                           <?php
                           $note = "";
                           if( $datediff < 7 && $datediff > 0 ){
@@ -171,10 +235,9 @@ div#ww {
 
            
           </div>
+      </section>
 
-
-      </div>
-    </div>
+    </main>
   </div>
 </div><!-- /container -->
 
