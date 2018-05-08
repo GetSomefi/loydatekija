@@ -17,7 +17,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-    <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/fontawesome-free-5.0.10/fontawesome.js"></script>
+    <!--<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/fontawesome-free-5.0.10/fontawesome.js"></script>-->
+    <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/fontawesome-free-5.0.10/svg-with-js/js/fontawesome.js"></script>
 <?php wp_head(); ?>
 </head>
 

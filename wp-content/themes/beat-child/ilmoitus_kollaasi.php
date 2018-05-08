@@ -8,10 +8,62 @@
 <?php get_header(); ?>
 
 <style type="text/css">
-div#ww {
-    width: 100%;
-}
+
 </style>
+
+<script type="text/javascript">
+jQuery(function($) { 
+  function sortByThis(a){
+    //console.log('a ', a); 
+    $('.announcements-holder').find('.one-announcement-button').each(function( i ){
+      var workbranches = $(this).data('workbranch').split(",");
+      var match = false;
+      for (var i = 0; i < workbranches.length; i++) {
+        console.log( workbranches[i],a.sort );
+        console.log('###########'); 
+        if( workbranches[i] == a.sort ){
+          match = true;
+          console.log('MATCH!'); 
+        }
+      }
+
+      if( !match ){
+        if( $(this).hasClass('sort-hidden') ){
+          $(this).removeClass('sort-hidden');
+        }else{
+          $(this).addClass('sort-hidden');
+        }
+      }
+      
+    });  
+  }
+
+  $('.beat-sorter-branch').click(function(){
+    if( $(this).hasClass('active') ){
+      $(this).removeClass('active');
+    }else{
+      $(this).addClass('active');
+    }
+  });
+  
+  /*close all open ones (also on sorting)*/
+  $('.one-announcement, .beat-sorter-branch').click( function(e) {
+    $('.collapse').collapse('hide');
+  });
+
+  /*close the open one*/
+  $('button.close-announcement').click(function(){
+    $(this).parent().collapse('hide');
+  });
+
+  $('.beat-sorter-branch').click(function(){
+    var sortBy = $(this).data();
+    sortByThis(sortBy);
+  });
+      
+      
+});
+</script>
 
 <div id="ww">
     <div class="container">
@@ -44,8 +96,60 @@ div#ww {
             endif;
             ?>
           </header>
+          
+          <section class="beat-branch-sort" aria-labelledby="beat-branch-sort-header">
+            <h3 id="beat-branch-sort-header">Ilmoitusten suodatus</h3>
+            
+            <h4>Ala</h4>
+            <button class="beat-sorter-branch beat-sorter-branch-tech" data-sort="Tekniikka">
+              <div class='beat-branch-type-icon branch-tech'>
+                <span><i class='fas fa-laptop'></i></span> Tekniikan alan ilmoitukset
+              </div>
+            </button>
+            <button class="beat-sorter-branch beat-sorter-branch-business" data-sort="Palveluliiketoiminta">
+              <div class='beat-branch-type-icon branch-business'>
+                <span><i class='fas fa-chart-line'></i></span> Palveluliiketoiminnan ilmoitukset
+              </div>
+            </button>
+            <button class="beat-sorter-branch beat-sorter-branch-medical" data-sort="Sosiaali- ja terveysala">
+              <div class='beat-branch-type-icon branch-medical'>
+                <span><i class='fa fa-heartbeat'></i></span> Sosiaali- ja terveysalan ilmoitukset
+              </div>
+            </button>
+
+            <h4>Palkkaus</h4>
+            <button class="beat-sorter-branch beat-sorter-general beat-sorter-paid-only">
+              <div class='beat-salary-type-icon'>
+                <span><i class='fas fa-euro-sign'></i></span> Näytä vain palkalliset
+              </div>
+            </button>
+            
+            <h4>Tyyppi</h4>
+            <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-summer">
+              <div class='beat-branch-type-icon branch-medical'>
+                Kesätyö
+              </div>
+            </button>
+            <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-internship">
+              <div class='beat-branch-type-icon branch-medical'>
+                Harjoittelu
+              </div>
+            </button>
+            <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-project">
+              <div class='beat-branch-type-icon branch-medical'>
+                Projekti
+              </div>
+            </button>
+            <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-thesis">
+              <div class='beat-branch-type-icon branch-medical'>
+                Opinnäytetyö
+              </div>
+            </button>
+
+          </section>
+
           <section aria-label="Sisältää kaikki avoimet haut" class="panel-group" id="all-jobs-list" role="tablist" aria-multiselectable="true">
-            <div class="row">
+            <div class="row announcements-holder">
             <?php
               $args = array( 
                   'post_type' => 'asiakaspuoli',
@@ -124,31 +228,35 @@ div#ww {
                 ?>
                 <?php
                 
+                $main_branch = "";
                 $branch_type_icon = "";
                 if( in_array("Tekniikka", get_field("ala_johon_ilmoitus_on_suunnattu")) ){
+                $main_branch = "Tekniikka";
                 $branch_type_icon .= "<div class='beat-branch-type-icon branch-tech'>";
                   $branch_type_icon .= "<span><i class='fas fa-laptop'></i></span>";
                 $branch_type_icon .= "</div>";
                 }
                 if( in_array("Palveluliiketoiminta", get_field("ala_johon_ilmoitus_on_suunnattu")) ){
+                $main_branch = "Palveluliiketoiminta";
                 $branch_type_icon .= "<div class='beat-branch-type-icon branch-business'>";
                   $branch_type_icon .= "<span><i class='fas fa-chart-line'></i></span>";
                 $branch_type_icon .= "</div>";
                 }
-                if( in_array("Sosiaali- ja teveysala", get_field("ala_johon_ilmoitus_on_suunnattu")) ){
+                if( in_array("Sosiaali- ja terveysala", get_field("ala_johon_ilmoitus_on_suunnattu")) ){
+                $main_branch = "Sosiaali- ja terveysala";
                 $branch_type_icon .= "<div class='beat-branch-type-icon branch-medical'>";
-                  $branch_type_icon .= "<span><i class='fas fa-notes-medical'></i></span>";
+                  $branch_type_icon .= "<span><i class='fa fa-heartbeat'></i></span>";
                 $branch_type_icon .= "</div>";
                 }
                 
                 ?>
 
-                <div <?php echo $data_attributes; ?> class="col-xs-12 col-sm-6 col-md-6">
+                <div <?php echo $data_attributes; ?> class="one-announcement-button col-xs-12 col-sm-6 col-md-6">
                   <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="heading-<?php echo $i; ?>">
                       <div class="panel-title">
                         <?php echo $salary_type_icon . $branch_type_icon; ?>
-                        <button class="title-button" role="button" data-toggle="collapse" data-parent="#cal-accordion" href="#collapse-<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $i; ?>">
+                        <button data-sortable="<?php echo $main_branch; ?>" class="title-button one-announcement" role="button" data-toggle="collapse" data-parent="#announcements" href="#announcement-<?php echo $i; ?>" aria-expanded="true" aria-controls="announcement-<?php echo $i; ?>">
                           <div class="beat-company-info">
                             <?php
                             $avatar = um_get_avatar_uri( um_profile('profile_photo'), 120 );
@@ -210,20 +318,23 @@ div#ww {
                         </button>
                       </div>
                     </div>
-                    <div id="collapse-<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-<?php echo $i; ?>">
-                      <div class="panel-body">
-                        <div class="panel-link">
-                          <a href="<?php the_permalink(); ?>">
-                            Lue koko ilmoitus
-                          </a>
-                        </div>
-                        <?php the_content(); ?>
-                        <div class="panel-link">
-                          <a href="<?php the_permalink(); ?>">
-                            Lue koko ilmoitus
-                          </a>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+                <div id="announcement-<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-<?php echo $i; ?>">
+                  <button class="close-announcement" aria-label="Sulje avoin ilmoitus ikkuna">
+                    <i class="fas fa-times"></i>
+                  </button>
+                  <div class="panel-body">
+                    <div class="panel-link">
+                      <a href="<?php the_permalink(); ?>">
+                        Lue koko ilmoitus
+                      </a>
+                    </div>
+                    <?php the_content(); ?>
+                    <div class="panel-link">
+                      <a href="<?php the_permalink(); ?>">
+                        Lue koko ilmoitus
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -235,6 +346,10 @@ div#ww {
 
            
           </div>
+      </section>
+
+      <section>
+        <h1>ILMAVA<br />BANNERI</h1>
       </section>
 
     </main>

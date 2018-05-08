@@ -115,10 +115,6 @@ body div.um-cover {
     border: none;
     padding: 15px 30px;
 }
-#all-jobs-list .panel-heading button .alert h5 {
-    font-size: 16px;
-    padding-top: 10px;
-}
 
 /*system basics*/
 .equal-heights {
@@ -146,8 +142,16 @@ h2 {
     color: #6e7992;
     margin-bottom: 20px;
 }
+.entry-content h2 {
+    margin-top: 30px;
+}
+
+
 .h3, h3 {
     font-size: 1.25rem;
+}
+.h4, h4 {
+    font-size: 1.15rem;
 }
 p {
     color: #4e4e4e;
@@ -190,7 +194,7 @@ Skeidaa
 */
 #all-jobs-list .panel-heading button {
     min-height: 200px;
-    background: #95838d;
+    background: #4e4e4e;
     outline: none;
     border: none;
     padding: 15px 30px;
@@ -441,11 +445,12 @@ body .um .um-form textarea{
 .beat-company-info {
     position: absolute;
     left: 0;
-    top: 0;
-    margin-left: 15px;
+    top: 50%;
+    margin-left: 30px;
     height: 50px;
     width: 50px;
-    margin-top: 15px;
+    margin-top: 0;
+    transform: translateY(-50%);
 }
 .more-company-info-avatar {
     border-radius: 100%;
@@ -453,35 +458,151 @@ body .um .um-form textarea{
 }
 
     /*palkkaus ikoni*/
-.beat-salary-type-icon,
-.beat-branch-type-icon {
+.beat-salary-type-icon span,
+.beat-branch-type-icon span {
     background-color: #4e4e4e;
     color: #FFF;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
     font-size: 1.2em;
     text-align: center;
     float: left;
-    border-right: 1px solid #FFF;
-    border-bottom: 1px solid #FFF;
 }
 span.beat-salary-type-unpayed {
     color: #d5d5d569;
 }
-/*
-.beat-salary-type-icon span.beat-salary-type-unpayed:after {
-    content: "";
-    height: 2px;
-    width: 22px;
-    background: #ffffff;
+
+.beat-branch-type-icon.branch-medical span,
+button.beat-sorter-branch.beat-sorter-branch-medical {
+    background-color: #E91E63;
+}
+.beat-branch-type-icon.branch-tech span,
+button.beat-sorter-branch.beat-sorter-branch-tech  {
+    background-color: #4a64c3;
+}
+.beat-branch-type-icon.branch-business span,
+button.beat-sorter-branch.beat-sorter-branch-business{
+    background-color: #8BC34A;  
+}
+button.beat-sorter-branch.beat-sorter-general {
+    background-color: #4e4e4e;
+}
+button.beat-sorter-branch.beat-sorter-general.beat-sorter-noicon {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+section.beat-branch-sort h4 {
+    margin-top: 30px;
+}
+
+section.beat-branch-sort {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+}
+button.beat-sorter-branch {
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;   
+
+    border: none;
+    padding: 10px 30px 10px 10px;
+    color: #FFF;
+    line-height: 50px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    outline: none !important;
+}
+button.beat-sorter-branch:hover{      
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+}
+button .beat-branch-type-icon span {
+    margin-right: 15px;
+    border: none;
+}
+
+button.beat-sorter-branch.active:after {
+    content: "\f00d";
+    font-family: FontAwesome;
     display: block;
     position: absolute;
-    top: 11px;
-    left: 13px;
-    -webkit-transform: rotate(65deg);
-    transform: rotate(65deg);
+    z-index: 1;
+    background: white;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    height: 20px;
+    width: 20px;
+    color: #4e4e4e;
+    line-height: 20px;
+    font-size: 12px;
 }
-*/
+
+/*KORJAA RESP!*/
+div#ww {
+    width: 100%;
+    margin-bottom: 60px;
+}
+#all-jobs-list .alert {
+    border: 0px solid transparent;
+    border-radius: 0;
+    max-width: 320px;
+    position: absolute;
+    right: 0;
+    top: -50px;
+    height: 50px;
+    text-overflow: ellipsis;
+}
+#all-jobs-list .panel-heading button .alert h5 {
+    font-size: 0.7em;
+    padding-top: 10px;
+}
 
 
+/*TARKASTA RESP!*/
+#all-jobs-list .panel-collapse {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background: #d5d5d5;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    right: 0;
+    padding: 30px;
+    border-top: 10px solid #4e4e4e;
+}
+#all-jobs-list .panel-collapse .panel-body {
+    overflow: auto;
+    max-height: 460px;
+}
+button.close-announcement {
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+      
+    position: absolute;
+    right: 0;
+    top: 0px;
+    margin-top: -40px;
+    margin-right: 30px;
+    border: none;
+    background-color: #4e4e4e;
+    height: 50px;
+    width: 50px;
+    line-height: normal;
+    text-align: center;
+    color: #FFF;
+    font-size: 30px;
+    opacity: 0;
+}
+.show button.close-announcement{
+    opacity: 1;
+}
+
+/*hide when sorted*/
+.one-announcement-button.sort-hidden {
+    display: none;
+}
