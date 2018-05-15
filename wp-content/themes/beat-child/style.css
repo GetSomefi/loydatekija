@@ -440,17 +440,24 @@ body .um .um-form textarea{
 }
 
 /*ilmoitus osio*/
-
+.panel-body h2 {
+    margin-top: 0;
+}
+#all-jobs-list .panel-heading button .alert h5 {
+    font-size: 0.7em;
+    padding-top: 0px;
+    line-height: 1.4em;
+}
     /*info paikkailmoituksen kulmassa*/
 .beat-company-info {
+    display: none;
     position: absolute;
-    left: 0;
-    top: 50%;
-    margin-left: 30px;
+    right: 0;
+    bottom: 0;
+    margin-right: 0px;
     height: 50px;
     width: 50px;
     margin-top: 0;
-    transform: translateY(-50%);
 }
 .more-company-info-avatar {
     border-radius: 100%;
@@ -514,6 +521,7 @@ button.beat-sorter-branch {
     margin-bottom: 15px;
     position: relative;
     outline: none !important;
+    width: 100%;
 }
 button.beat-sorter-branch:hover{      
     -webkit-transform: scale(1.02);
@@ -549,16 +557,19 @@ div#ww {
 #all-jobs-list .alert {
     border: 0px solid transparent;
     border-radius: 0;
-    max-width: 320px;
+    max-width: 130px;
     position: absolute;
     right: 0;
     top: -50px;
     height: 50px;
     text-overflow: ellipsis;
 }
+#all-jobs-list .alert-success {
+    font-size: 0.65em;
+}
 #all-jobs-list .panel-heading button .alert h5 {
     font-size: 0.7em;
-    padding-top: 10px;
+    padding-top: 0px;
 }
 
 
@@ -606,3 +617,51 @@ button.close-announcement {
 .one-announcement-button.sort-hidden {
     display: none;
 }
+
+
+/*front how it works*/
+section.how-it-works {
+    background: #6e7891;
+    margin-top: 60px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+h2#how-it-works {
+    margin-top: 0;
+    color: #fff;
+    margin-bottom: 60px;
+    font-size: 3.4em;
+}
+.hiw-employer{
+    margin-bottom: 80px;
+}
+.hiw-employer h3, 
+.hiw-student h3 {
+    text-align: center;
+    font-size: 2em;
+    color: #FFF;
+    border-bottom: 1px solid #ffffff4f;
+    display: table;
+    margin: auto;
+    position: relative;
+    padding-bottom: 5px;
+}
+.hiw-icon {
+    text-align: center;
+    font-size: 4em;
+    color: #FFF;
+}
+.hiw-text {
+    text-align: center;
+    font-size: 1.4em;
+    color: #FFF;
+}
+
+.hidden-until-sorted{
+    display: none;
+}
+.hidden-until-sorted.active{
+    display: block;
+}
+
+

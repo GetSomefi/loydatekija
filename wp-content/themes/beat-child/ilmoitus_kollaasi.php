@@ -7,64 +7,6 @@
 
 <?php get_header(); ?>
 
-<style type="text/css">
-
-</style>
-
-<script type="text/javascript">
-jQuery(function($) { 
-  function sortByThis(a){
-    //console.log('a ', a); 
-    $('.announcements-holder').find('.one-announcement-button').each(function( i ){
-      var workbranches = $(this).data('workbranch').split(",");
-      var match = false;
-      for (var i = 0; i < workbranches.length; i++) {
-        console.log( workbranches[i],a.sort );
-        console.log('###########'); 
-        if( workbranches[i] == a.sort ){
-          match = true;
-          console.log('MATCH!'); 
-        }
-      }
-
-      if( !match ){
-        if( $(this).hasClass('sort-hidden') ){
-          $(this).removeClass('sort-hidden');
-        }else{
-          $(this).addClass('sort-hidden');
-        }
-      }
-      
-    });  
-  }
-
-  $('.beat-sorter-branch').click(function(){
-    if( $(this).hasClass('active') ){
-      $(this).removeClass('active');
-    }else{
-      $(this).addClass('active');
-    }
-  });
-  
-  /*close all open ones (also on sorting)*/
-  $('.one-announcement, .beat-sorter-branch').click( function(e) {
-    $('.collapse').collapse('hide');
-  });
-
-  /*close the open one*/
-  $('button.close-announcement').click(function(){
-    $(this).parent().collapse('hide');
-  });
-
-  $('.beat-sorter-branch').click(function(){
-    var sortBy = $(this).data();
-    sortByThis(sortBy);
-  });
-      
-      
-});
-</script>
-
 <div id="ww">
     <div class="container">
       <main id="content">
@@ -98,53 +40,71 @@ jQuery(function($) {
           </header>
           
           <section class="beat-branch-sort" aria-labelledby="beat-branch-sort-header">
-            <h3 id="beat-branch-sort-header">Ilmoitusten suodatus</h3>
             
-            <h4>Ala</h4>
-            <button class="beat-sorter-branch beat-sorter-branch-tech" data-sort="Tekniikka">
-              <div class='beat-branch-type-icon branch-tech'>
-                <span><i class='fas fa-laptop'></i></span> Tekniikan alan ilmoitukset
-              </div>
-            </button>
-            <button class="beat-sorter-branch beat-sorter-branch-business" data-sort="Palveluliiketoiminta">
-              <div class='beat-branch-type-icon branch-business'>
-                <span><i class='fas fa-chart-line'></i></span> Palveluliiketoiminnan ilmoitukset
-              </div>
-            </button>
-            <button class="beat-sorter-branch beat-sorter-branch-medical" data-sort="Sosiaali- ja terveysala">
-              <div class='beat-branch-type-icon branch-medical'>
-                <span><i class='fa fa-heartbeat'></i></span> Sosiaali- ja terveysalan ilmoitukset
-              </div>
-            </button>
+            <div class="row">
 
-            <h4>Palkkaus</h4>
-            <button class="beat-sorter-branch beat-sorter-general beat-sorter-paid-only">
-              <div class='beat-salary-type-icon'>
-                <span><i class='fas fa-euro-sign'></i></span> Näytä vain palkalliset
+              <div class="col-12">
+                <h3 id="beat-branch-sort-header">Ilmoitusten suodatus</h3>
               </div>
-            </button>
-            
-            <h4>Tyyppi</h4>
-            <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-summer">
-              <div class='beat-branch-type-icon branch-medical'>
-                Kesätyö
+
+              <div class="col-sm-12 col-md-5">
+                <h4>Ala</h4>
+                <button class="beat-sorter-branch beat-sorter-branch-tech" data-sort="Tekniikka">
+                  <div class='beat-branch-type-icon branch-tech'>
+                    <span><i class='fas fa-laptop'></i></span> Tekniikan alan ilmoitukset
+                  </div>
+                </button>
+                <button class="beat-sorter-branch beat-sorter-branch-business" data-sort="Palveluliiketoiminta">
+                  <div class='beat-branch-type-icon branch-business'>
+                    <span><i class='fas fa-chart-line'></i></span> Palveluliiketoiminnan ilmoitukset
+                  </div>
+                </button>
+                <button class="beat-sorter-branch beat-sorter-branch-medical" data-sort="Sosiaali- ja terveysala">
+                  <div class='beat-branch-type-icon branch-medical'>
+                    <span><i class='fa fa-heartbeat'></i></span> Sosiaali- ja terveysalan ilmoitukset
+                  </div>
+                </button>
+                <button class="beat-sorter-branch beat-sorter-general beat-sorter-paid-only">
+                  <div class='beat-salary-type-icon'>
+                    <span><i class='fas fa-euro-sign'></i></span> Näytä vain palkalliset
+                  </div>
+                </button>
               </div>
-            </button>
-            <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-internship">
-              <div class='beat-branch-type-icon branch-medical'>
-                Harjoittelu
+
+              <div class="col-sm-12 col-md-4">
+                <h4>Tyyppi</h4>
+                <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-summer" data-sort="">
+                  <div class='beat-branch-type-icon branch-medical'>
+                    Työ
+                  </div>
+                </button>
+                <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-internship">
+                  <div class='beat-branch-type-icon branch-medical'>
+                    Harjoittelu
+                  </div>
+                </button>
+                <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-project">
+                  <div class='beat-branch-type-icon branch-medical'>
+                    Projekti
+                  </div>
+                </button>
+                <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-thesis">
+                  <div class='beat-branch-type-icon branch-medical'>
+                    Opinnäytetyö
+                  </div>
+                </button>
               </div>
-            </button>
-            <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-project">
-              <div class='beat-branch-type-icon branch-medical'>
-                Projekti
+
+              <div class="hidden-until-sorted col-sm-12 col-md-3">
+                <h4>Suodatus valinnat</h4>
+                <button class="beat-sorter-branch beat-sorter-branch-clear" data-sort="clear-all">
+                  <div class='beat-branch-type-icon'>
+                    <span><i class="fas fa-eraser"></i></span> Tyhjennä
+                  </div>
+                </button>
               </div>
-            </button>
-            <button class="beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-thesis">
-              <div class='beat-branch-type-icon branch-medical'>
-                Opinnäytetyö
-              </div>
-            </button>
+
+            </div>
 
           </section>
 
@@ -162,6 +122,7 @@ jQuery(function($) {
                   'no_found_rows'  => true,
                   'meta_query'     => array(array(
                       'key'    => 'haku_loppuu',
+                      //'value'  => date('Ymd', strtotime("-1 week")),
                       'value'  => date('Ymd', strtotime("-1 week")),
                       'compare'=> '>=',
                       'type'   => 'NUMERIC'
@@ -171,7 +132,10 @@ jQuery(function($) {
               $query = new WP_Query( $args );
               $i = 1; 
             ?>
-            <?php if ( $query->have_posts() ) { ?>
+            <?php 
+              $col_sizes = "col-xs-12 col-sm-6 col-md-4"; //"col-xs-12 col-sm-6 col-md-6";
+              if ( $query->have_posts() ) { 
+            ?>
               <?php while ( $query->have_posts() ) : $query->the_post(); ?>
                 <?php $i++; ?>  
                 <?php
@@ -251,7 +215,7 @@ jQuery(function($) {
                 
                 ?>
 
-                <div <?php echo $data_attributes; ?> class="one-announcement-button col-xs-12 col-sm-6 col-md-6">
+                <div <?php echo $data_attributes; ?> class="one-announcement-button <?php echo $col_sizes; ?>">
                   <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="heading-<?php echo $i; ?>">
                       <div class="panel-title">
@@ -282,7 +246,7 @@ jQuery(function($) {
                           if( $datediff == 0 ){
                           ?>
                           <div class="alert alert-danger">
-                            <h5>Huomio! Hakuaika päättyy tänään</h5>
+                            <h5>Hakuaika päättyy tänään</h5>
                           </div>
                           <?php
                           }
@@ -321,19 +285,46 @@ jQuery(function($) {
                   </div>
                 </div>
                 <div id="announcement-<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-<?php echo $i; ?>">
-                  <button class="close-announcement" aria-label="Sulje avoin ilmoitus ikkuna">
+                  <button class="close-announcement" aria-label="<?php _e("Sulje avoin ilmoitus ikkuna"); ?>">
                     <i class="fas fa-times"></i>
                   </button>
                   <div class="panel-body">
                     <div class="panel-link">
-                      <a href="<?php the_permalink(); ?>">
-                        Lue koko ilmoitus
+                      <a title="<?php _e("Lue koko ilmoitus"); ?>" href="<?php the_permalink(); ?>">
+                        <?php _e("Lue koko ilmoitus"); ?>
                       </a>
                     </div>
                     <?php the_content(); ?>
+
+                    <?php if( get_field('piilota_yhteystiedot_') == "no" ): ?>
+                    <div>
+                      <h3>Yhteys</h3>
+                      <?php
+                      if( get_field('nimi') == "" ){
+                      echo um_user('first_name') . " " . um_user('last_name') . "<br />";
+                      }else{
+                        echo get_field('nimi') . "<br />";
+                        
+                      }
+
+                      if( get_field('sahkoposti') == "" ){
+                        echo um_user('user_email') . "<br />";
+                      }else{
+                        echo get_field('sahkoposti') . "<br />";
+                      }
+
+                      if( get_field('puhelin') == "" ){
+                        echo um_user('phone_number');
+                      }else{
+                        echo get_field('puhelin');
+                      }
+                      ?>
+                    </div>
+                    <?php endif; ?>
+
                     <div class="panel-link">
-                      <a href="<?php the_permalink(); ?>">
-                        Lue koko ilmoitus
+                      <a title="<?php _e("Lue koko ilmoitus"); ?>" href="<?php the_permalink(); ?>">
+                        <?php _e("Lue koko ilmoitus"); ?>
                       </a>
                     </div>
                   </div>

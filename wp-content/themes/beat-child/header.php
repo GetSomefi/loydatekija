@@ -94,7 +94,7 @@
                             </a>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 readmore-holder block-link-holder">
-                            <a href="#content" aria-label="Lue lisää tästä palvelusta">
+                            <a class="smooth-scroll" href="#content" aria-label="Lue lisää tästä palvelusta">
                                 <p><strong><?php _e("Mikä on Löydä osaaja?","mika-on-loyda-osaaja"); ?></strong></p>
                                 <p><?php _e("Tutustu palveluumme","tutustu-palveluumme"); ?></p>
                             </a>
