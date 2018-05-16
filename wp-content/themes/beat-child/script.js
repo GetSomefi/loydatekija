@@ -16,39 +16,85 @@ $(document).ready(function(){
 
 	var sortByThese = [];
 	function sortByThis(a){
-		var exists = sortByThese.indexOf(a);
-		console.log('exists', exists);
-
-		if(exists == -1){
-			sortByThese.push(a);
-			//$('.announcements-holder').find('.one-announcement-button').removeClass('sort-hidden');
-		}else{
-			sortByThese.splice(exists,1);
-		}
-
-		if(sortByThese.length != 0 ){
-			$('.announcements-holder').find('.one-announcement-button').addClass('sort-hidden');
-			$('.hidden-until-sorted').addClass('active');	
-		}else{
+		console.log('a',a); 
+		if(a == "clear"){
+			sortByThese = [];
+			$('.hidden-until-sorted, .beat-sorter-branch').removeClass('active');
 			$('.announcements-holder').find('.one-announcement-button').removeClass('sort-hidden');
-			$('.hidden-until-sorted').removeClass('active');
-		}
+		}else{
+			var exists = sortByThese.indexOf(a);
+			console.log('exists', exists);
 
-		$('.announcements-holder').find('.one-announcement-button').each(function( i ){
-			var workbranches = $(this).data('workbranch').split(",");
-			var match = false;
-			for (var i = 0; i < workbranches.length; i++) {
+			if(exists == -1){
+				sortByThese.push(a);
+			}else{
+				sortByThese.splice(exists,1);
+			}
 
-				for (var i2 = 0; i2 < sortByThese.length; i2++) {
-					if( workbranches[i] == sortByThese[i2] ){
-						match = true;
-						$(this).removeClass('sort-hidden');
+			if(sortByThese.length != 0 ){
+				$('.announcements-holder').find('.one-announcement-button').addClass('sort-hidden');
+				$('.hidden-until-sorted').addClass('active');	
+			}else{
+				$('.announcements-holder').find('.one-announcement-button').removeClass('sort-hidden');
+				$('.hidden-until-sorted').removeClass('active');
+			}
+
+			$('.announcements-holder').find('.one-announcement-button').each(function( i ){
+				var sortOption = $(this).data('workbranch').split(",");
+				var match = false;
+				var match2 = false;
+				var match3 = false;
+
+				if( $(".beat-branch-sort").find('.beat-bb').hasClass('active') ){
+					for (var i = 0; i < sortOption.length; i++) {
+
+						for (var i2 = 0; i2 < sortByThese.length; i2++) {
+							if( sortOption[i] == sortByThese[i2] ){
+								//$(this).removeClass('sort-hidden');
+								match = true;
+							}
+						}
 					}
+				}else{
+					match = true;
 				}
 
-			}
-		  
-		});  
+				if( $(".beat-branch-sort").find('.beat-bs').hasClass('active') ){
+					var sortOption = $(this).data('salary-type').split(",");
+					for (var i = 0; i < sortOption.length; i++) {
+
+						for (var i2 = 0; i2 < sortByThese.length; i2++) {
+							if( sortOption[i] == sortByThese[i2] ){
+								//$(this).removeClass('sort-hidden');
+								match2 = true;
+							}
+						}
+					}
+				}else{
+					match2 = true;
+				}
+
+				if( $(".beat-branch-sort").find('.beat-bt').hasClass('active') ){
+					var sortOption = $(this).data('worktype').split(",");
+					for (var i = 0; i < sortOption.length; i++) {
+
+						for (var i2 = 0; i2 < sortByThese.length; i2++) {
+							if( sortOption[i] == sortByThese[i2] ){
+								//$(this).removeClass('sort-hidden');
+								match3 = true;
+							}
+						}
+					}
+				}else{
+					match3 = true;
+				}
+				
+				if (match && match2 && match3){
+					$(this).removeClass('sort-hidden');
+				}
+
+			}); 
+		}	
 	}
 
 
@@ -64,16 +110,20 @@ $(document).ready(function(){
 
 	$('.beat-sorter-branch').click(function(){
 		var sortBy = $(this).data();
-		sortByThis(sortBy.sort);
-		//console.log('Sort',sortBy.sort); 
 
-		//FIKSAA!
-		if( $(this).hasClass('active') ){
-			$(this).removeClass('active');
+		if( $(this).hasClass('beat-sorter-branch-clear') ){
+			sortBy.sort = "clear";
 		}else{
-			$(this).addClass('active');
+			//FIKSAA!
+			if( $(this).hasClass('active') ){
+				$(this).removeClass('active');
+			}else{
+				$(this).addClass('active');
+			}			
 		}
+		
+		sortByThis(sortBy.sort);
 
 	});
-	});     
+});     
 }(jQuery));
