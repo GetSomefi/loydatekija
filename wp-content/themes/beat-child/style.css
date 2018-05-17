@@ -160,6 +160,9 @@ h2 {
 p {
     color: #4e4e4e;
     font-size: 1.2em;
+    max-width: 760px;
+    margin: auto;
+    margin-bottom: 30px;
 }
 
 /*bs default override*/
@@ -503,23 +506,23 @@ button.beat-sorter-branch-clear{
 button.beat-sorter-branch.beat-sorter-general.beat-sorter-noicon {
     padding-left: 30px;
     padding-right: 30px;
+    width: auto;
 }
 
 section.beat-branch-sort h4 {
-    margin-top: 30px;
+    margin-top: 0px;
 }
 
 section.beat-branch-sort {
     margin-top: 30px;
     margin-bottom: 30px;
-    padding-bottom: 30px;
 }
 button.beat-sorter-branch {
     -webkit-transition: all .2s linear;
     transition: all .2s linear;   
 
     border: none;
-    padding: 10px 30px 10px 10px;
+    /*padding: 10px 30px 10px 10px;*/
     color: #FFF;
     line-height: 50px;
     margin-right: 15px;
@@ -552,6 +555,29 @@ button.beat-sorter-branch.active:after {
     color: #4e4e4e;
     line-height: 20px;
     font-size: 12px;
+}
+
+.beat-sorter-branch span.beat-sorter-branch-inner {
+    white-space: nowrap;
+    text-overflow: ellipsis !important;
+    overflow: hidden;
+    display: table-cell;
+    font-style: normal;
+}
+
+button.beat-sorter-paid-only,
+button.beat-sorter-branch-clear {
+    width: auto;
+    padding-right: 30px;
+}
+
+a.beat-sort-hider-btn.beat-general-link {
+    margin-left: 15px;
+    font-size: 0.7em;
+    line-height: 28px;
+    width: 28px;
+    text-align: center;
+    padding: 0;
 }
 
 /*KORJAA RESP!*/
@@ -678,5 +704,29 @@ section.beat-awesome-banner {
     margin-left: -15px;
     margin-right: -15px;
     background: #d5d5d5;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+section.beat-awesome-banner .beat-awesome-banner-inner {
+    background: #ffffff63;
+    margin: 0;
+    padding-bottom: 4rem;
+}
+section.beat-awesome-banner .h1 {
+    margin: 0;
+    padding-bottom: 1rem;
+}
+section.beat-awesome-banner .h1,
+section.beat-awesome-banner h1{
+    color: #4e4e4e;
 }
 
+
+/*sort open close*/
+a.beat-sort-hider-btn.beat-general-link {
+    color: #FFF;
+}
+a.beat-sort-hider-btn.beat-general-link:hover {
+    color: #FFF;
+}

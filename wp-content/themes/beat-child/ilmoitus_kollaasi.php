@@ -36,78 +36,87 @@
         endif;
         ?>
       </header>
-          
-      <section class="beat-branch-sort" aria-labelledby="beat-branch-sort-header">
+  
+      <section class="beat-branch-sort" aria-labelledby="beat-branch-sort-header">   
+
+          <div>
+            <h3 id="beat-branch-sort-header">
+              <?php _e("Ilmoitusten suodatus","ilmoitusten-suodatus"); ?>
+              <a class="beat-sort-hider-btn beat-general-link" data-hidewhat="beat-filter-options">
+                <i class="fas fa-chevron-down"></i>
+              </a>    
+            </h3>
+          </div>
+
+          <div id="beat-filter-options">
+
+            <div class="row">
+
+              <div class="col-sm-12 col-md-6 col-lg-4">
+                <h4><?php _e("Ala","ala"); ?></h4>
+                <button data-target="#none" class="beat-bb beat-sorter-branch beat-sorter-branch-tech">
+                  <span class='beat-sorter-branch-inner beat-branch-type-icon branch-tech'>
+                    <span><i class='fas fa-laptop'></i></span> Tekniikan alan ilmoitukset
+                  </span>
+                </button>
+                <button class="beat-bb beat-sorter-branch beat-sorter-branch-business" data-sort="Palveluliiketoiminta">
+                  <span class='beat-sorter-branch-inner beat-branch-type-icon branch-business'>
+                    <span><i class='fas fa-chart-line'></i></span> Palveluliiketoiminnan ilmoitukset
+                  </span>
+                </button>
+                <button class="beat-bb beat-sorter-branch beat-sorter-branch-medical" data-sort="Sosiaali- ja terveysala">
+                  <span class='beat-sorter-branch-inner beat-branch-type-icon branch-medical'>
+                    <span><i class='fa fa-heartbeat'></i></span> Sosiaali- ja terveysalan ilmoitukset
+                  </span>
+                </button>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-4">
+                <h4><?php _e("Tyyppi ja palkkaus","tyyppi-ja-palkkaus"); ?></h4>
+                <button class="beat-bt beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-summer" data-sort="Kesätyö">
+                  <span class='beat-sorter-branch-inner beat-branch-type-icon branch-medical'>
+                    Työ
+                  </span>
+                </button>
+                <button class="beat-bt beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-internship" data-sort="Harjoittelu">
+                  <span class='beat-sorter-branch-inner beat-branch-type-icon branch-medical'>
+                    Harjoittelu
+                  </span>
+                </button>
+                <button class="beat-bt beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-project" data-sort="Projekti">
+                  <span class='beat-sorter-branch-inner beat-branch-type-icon branch-medical'>
+                    Projekti
+                  </span>
+                </button>
+                <button class="beat-bt beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-thesis" data-sort="Opinnäytetyö">
+                  <span class='beat-sorter-branch-inner beat-branch-type-icon branch-medical'>
+                    Opinnäytetyö
+                  </span>
+                </button>
+                <button class="beat-bs beat-sorter-branch beat-sorter-general beat-sorter-paid-only" data-sort="Palkallinen">
+                  <span class='beat-sorter-branch-inner beat-salary-type-icon'>
+                    <span><i class='fas fa-euro-sign'></i></span> Näytä vain palkalliset
+                  </span>
+                </button>
+              </div>
+
+              <div class="hidden-until-sorted col-sm-12 col-md-12 col-lg-3">
+                <h4><?php echo _e("Suodatus valinnat","suodatus-valinnat"); ?></h4>
+                <button class="beat-sorter-branch beat-sorter-branch-clear" data-sort="clear-all">
+                  <span class='beat-sorter-branch-inner beat-branch-type-icon'>
+                    <span><i class="fas fa-eraser"></i></span> <?php echo _e("Tyhjennä","tyhjenna"); ?>
+                  </span>
+                </button>
+              </div>
+
+            </div>
+          </div>
         
-        <div class="row">
-
-          <div class="col-12">
-            <h3 id="beat-branch-sort-header"><?php _e("Ilmoitusten suodatus","ilmoitusten-suodatus"); ?></h3>
-          </div>
-
-          <div class="col-sm-12 col-md-5">
-            <h4><?php _e("Ala ja palkkaus","ala-ja-palkkaus"); ?></h4>
-            <button class="beat-bb beat-sorter-branch beat-sorter-branch-tech" data-sort="Tekniikka">
-              <div class='beat-branch-type-icon branch-tech'>
-                <span><i class='fas fa-laptop'></i></span> Tekniikan alan ilmoitukset
-              </div>
-            </button>
-            <button class="beat-bb beat-sorter-branch beat-sorter-branch-business" data-sort="Palveluliiketoiminta">
-              <div class='beat-branch-type-icon branch-business'>
-                <span><i class='fas fa-chart-line'></i></span> Palveluliiketoiminnan ilmoitukset
-              </div>
-            </button>
-            <button class="beat-bb beat-sorter-branch beat-sorter-branch-medical" data-sort="Sosiaali- ja terveysala">
-              <div class='beat-branch-type-icon branch-medical'>
-                <span><i class='fa fa-heartbeat'></i></span> Sosiaali- ja terveysalan ilmoitukset
-              </div>
-            </button>
-            <button class="beat-bs beat-sorter-branch beat-sorter-general beat-sorter-paid-only" data-sort="Palkallinen">
-              <div class='beat-salary-type-icon'>
-                <span><i class='fas fa-euro-sign'></i></span> Näytä vain palkalliset
-              </div>
-            </button>
-          </div>
-
-          <div class="col-sm-12 col-md-4">
-            <h4><?php _e("Tyyppi","tyyppi"); ?></h4>
-            <button class="beat-bt beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-summer" data-sort="Kesätyö">
-              <div class='beat-branch-type-icon branch-medical'>
-                Työ
-              </div>
-            </button>
-            <button class="beat-bt beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-internship" data-sort="Harjoittelu">
-              <div class='beat-branch-type-icon branch-medical'>
-                Harjoittelu
-              </div>
-            </button>
-            <button class="beat-bt beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-project" data-sort="Projekti">
-              <div class='beat-branch-type-icon branch-medical'>
-                Projekti
-              </div>
-            </button>
-            <button class="beat-bt beat-sorter-branch beat-sorter-general beat-sorter-noicon beat-sorter-thesis" data-sort="Opinnäytetyö">
-              <div class='beat-branch-type-icon branch-medical'>
-                Opinnäytetyö
-              </div>
-            </button>
-          </div>
-
-          <div class="hidden-until-sorted col-sm-12 col-md-3">
-            <h4><?php echo _e("Suodatus valinnat","suodatus-valinnat"); ?></h4>
-            <button class="beat-sorter-branch beat-sorter-branch-clear" data-sort="clear-all">
-              <div class='beat-branch-type-icon'>
-                <span><i class="fas fa-eraser"></i></span> <?php echo _e("Tyhjennä","tyhjenna"); ?>
-              </div>
-            </button>
-          </div>
-
-        </div>
 
       </section>
 
       <div>
-        <p>
+        <p class="text-center">
           <time>
           <?php echo _e("Tänään on","tanaan-on"); ?> <?php echo $date_now; ?>, <?php echo _e("viikko","viikko"); ?> <?php echo $week_now; ?>   
           </time> 

@@ -125,5 +125,27 @@ $(document).ready(function(){
 		sortByThis(sortBy.sort);
 
 	});
+
+	$('.beat-sort-hider-btn').click(function(){
+		var elementId = "#" + $(this).data('hidewhat');
+
+		if( $(this).hasClass('beat-hidden') ){
+			$(this).removeClass('beat-hidden');
+			$(this).html('<i class="fas fa-chevron-down"></i>');
+		}else{
+			$(this).addClass('beat-hidden');
+			$(this).html('<i class="fas fa-chevron-up"></i>');
+		}
+
+		if( $(elementId).hasClass('beat-hidden') ){
+			$(elementId).removeClass('beat-hidden');
+			$(elementId).slideDown();
+		}else{
+			$(elementId).addClass('beat-hidden');
+			$(elementId).slideUp();
+		}
+	});
+	  	
+
 });     
 }(jQuery));

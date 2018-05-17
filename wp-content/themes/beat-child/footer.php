@@ -10,6 +10,7 @@
  */
 
 ?>
+<?php get_template_part("contact_banner"); ?>
 <?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
 			</div><!-- .row -->
 		</div><!-- .container -->
