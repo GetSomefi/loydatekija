@@ -114,7 +114,6 @@ $(document).ready(function(){
 		if( $(this).hasClass('beat-sorter-branch-clear') ){
 			sortBy.sort = "clear";
 		}else{
-			//FIKSAA!
 			if( $(this).hasClass('active') ){
 				$(this).removeClass('active');
 			}else{
@@ -146,6 +145,54 @@ $(document).ready(function(){
 		}
 	});
 	  	
+	/*search from content*/
+	function searchFromContent(){
+		$('.beat-no-matches, .beat-yes-matches').remove();
+		var txt = $('#beat-filter-search').val();
+		if(txt == ""){
+			$('.one-announcement').removeClass('not-a-match').removeClass('this-is-a-match');
+			$('.this-is-a-match-parent').removeClass('this-is-a-match-parent');
+		}else{
+			txt = txt.toLowerCase();
+			$('.one-announcement').each(function(){
+				var elementId = "#" + $(this).data('contentid');
 
+				elementAsText = $(elementId).find('.beat-searchable-content').text();
+				elementAsText = elementAsText.toLowerCase();
+				console.log('text', elementAsText );
+				if (elementAsText.indexOf(txt) >= 0){
+					$(this).addClass('this-is-a-match');
+					$(this).removeClass('not-a-match');
+
+					$(this).parents('.one-announcement-button').addClass('this-is-a-match-parent').prependTo('.announcements-holder');
+				}else{
+					$(this).removeClass('this-is-a-match');
+					$(this).addClass('not-a-match');
+
+					$(this).parents('.one-announcement-button').removeClass('this-is-a-match-parent');
+				}
+			});
+
+			
+
+			$('.this-is-a-match-parent').first().before("<div class='beat-yes-matches'><h3>Sisältää hakusanan <b>"+$('#beat-filter-search').val()+"</b></h3></div>");
+			$('.this-is-a-match-parent').last().after("<div class='beat-no-matches'><h3>Ei sisällä hakusanaa</h3></div>");
+		}
+	}  	
+	$('#beat-filter-search').keyup(function(){
+		searchFromContent();
+	});
+	$('.beat-filter-search-submit').click(function(e){
+		var hash = "#all-jobs-list";
+		console.log('juu'); 
+		$('html, body').animate({
+			scrollTop: $(hash).offset().top
+			}, 300, function(){
+			console.log('juu2'); 
+			//window.location.hash = hash;
+		});	
+		searchFromContent();
+	});
+	  	
 });     
 }(jQuery));

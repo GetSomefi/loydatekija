@@ -46,6 +46,16 @@
                 <i class="fas fa-chevron-down"></i>
               </a>    
             </h3>
+            <div class="row">
+              <div class="beat-filter-search-holder col-sm-12 col-md-6 col-lg-4">
+                <input id="beat-filter-search" type="input" name="haku" placeholder="Hae ilmoituksista ..." />
+                <button class="beat-sorter-search-btn beat-sorter-general beat-sorter-noicon beat-filter-search-submit" title="Haku tapahtuu ilman tämän napin painamistakin :)">
+                  <span class='beat-sorter-branch-inner'>
+                    <span><i class='fas fa-search'></i></span>
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
 
           <div id="beat-filter-options">
@@ -54,7 +64,7 @@
 
               <div class="col-sm-12 col-md-6 col-lg-4">
                 <h4><?php _e("Ala","ala"); ?></h4>
-                <button data-target="#none" class="beat-bb beat-sorter-branch beat-sorter-branch-tech">
+                <button class="beat-bb beat-sorter-branch beat-sorter-branch-tech" data-sort="Tekniikka">
                   <span class='beat-sorter-branch-inner beat-branch-type-icon branch-tech'>
                     <span><i class='fas fa-laptop'></i></span> Tekniikan alan ilmoitukset
                   </span>
@@ -235,7 +245,7 @@
                   <div class="panel-heading" role="tab" id="heading-<?php echo $i; ?>">
                     <div class="panel-title">
                       <?php echo $salary_type_icon . $branch_type_icon; ?>
-                      <button data-sortable="<?php echo $main_branch; ?>" class="title-button one-announcement" role="button" data-toggle="collapse" data-parent="#announcements" href="#announcement-<?php echo $i; ?>" aria-expanded="true" aria-controls="announcement-<?php echo $i; ?>">
+                      <button data-sortable="<?php echo $main_branch; ?>" class="title-button one-announcement" role="button" data-toggle="collapse" data-parent="#announcements" href="#announcement-<?php echo $i; ?>" aria-expanded="false" aria-controls="announcement-<?php echo $i; ?>" data-contentid="announcement-<?php echo $i; ?>">
                         <div class="beat-company-info">
                           <?php
                           $avatar = um_get_avatar_uri( um_profile('profile_photo'), 120 );
@@ -309,7 +319,10 @@
                       <?php _e("Lue koko ilmoitus"); ?>
                     </a>
                   </div>
-                  <?php the_content(); ?>
+                  <div class="beat-searchable-content">
+                    <div class="beat-searchable-title" style="display:none !important;"><?php echo get_the_title(); ?></div>
+                    <?php the_content(); ?>
+                  </div>
 
                   <?php if( get_field('piilota_yhteystiedot_') == "no" ): ?>
                   <div>

@@ -86,6 +86,12 @@ nav.navbar {
     margin: auto;
 }
 
+/*rekry sivu*/
+.single-asiakaspuoli .entry-content p {
+    margin-right: 60px;
+}
+
+
 /*
 footer:hover img.samk-logo{
 	opacity: 1;
@@ -517,7 +523,8 @@ section.beat-branch-sort {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-button.beat-sorter-branch {
+button.beat-sorter-branch,
+.beat-sorter-search-btn {
     -webkit-transition: all .2s linear;
     transition: all .2s linear;   
 
@@ -531,7 +538,8 @@ button.beat-sorter-branch {
     outline: none !important;
     width: 100%;
 }
-button.beat-sorter-branch:hover{      
+button.beat-sorter-branch:hover,
+.beat-sorter-search-btn:hover{      
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
 }
@@ -730,3 +738,50 @@ a.beat-sort-hider-btn.beat-general-link {
 a.beat-sort-hider-btn.beat-general-link:hover {
     color: #FFF;
 }
+
+/*
+.this-is-a-match {
+    border-bottom: 10px solid #00a5cd !important;
+}
+*/
+
+input#beat-filter-search {
+    height: 53px;
+    margin-bottom: 25px;
+    max-width: 350px;
+    width: 80%;
+    outline: none !important;
+    border: none;
+    background: #f1f1f1;
+    padding-left: 15px;
+    margin-right: -5px;
+    position: relative;
+    top: 1px;
+}
+button.beat-sorter-general.beat-sorter-noicon.beat-filter-search-submit {
+    width: 20%;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    background: #4e4e4e;
+    margin: 0;
+}
+button.beat-sorter-general.beat-filter-search-submit .beat-sorter-branch-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
+.beat-no-matches,
+.beat-yes-matches {
+    position: relative;
+    width: 100%;
+    margin: 15px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #4e4e4e;
+}
+.beat-yes-matches b {
+    color: #6e7891;
+}
+

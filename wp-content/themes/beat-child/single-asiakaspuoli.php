@@ -11,6 +11,9 @@ get_header(); ?>
 			<section id="primary" class="content-area col-sm-12 col-lg-8">
 				<main id="main" class="site-main" role="main">
 
+				<br />
+				<a class="beat-general-link" href="<?php echo esc_url( get_permalink(41) ); ?>">Takaisin ilmoituksiin</a>
+
 				<?php
 				while ( have_posts() ) : the_post();
 
