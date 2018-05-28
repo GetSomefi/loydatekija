@@ -92,10 +92,13 @@ get_header(); ?>
 				<?php 
 				$authorID = get_the_author_meta( 'ID' );
 
-				um_fetch_user( $authorID );
-
-				$user_name = um_user('display_name');
+				$user_name = get_the_author_meta('display_name');
 				$user_desc = get_the_author_meta('description');
+				$user_address = get_the_author_meta( 'homeaddress' );
+                $user_phone = get_the_author_meta( 'phone' );
+                $user_email = get_the_author_meta( 'email' );
+                $user_firstname = get_the_author_meta( 'first_name' );
+                $user_lastname = get_the_author_meta( 'last_name' );
 
 				echo "<div class='more-info-name'>";
 					echo "<h3>";
@@ -103,34 +106,36 @@ get_header(); ?>
 					echo "</h3>";
 				echo "</div>";
 
-				$content = um_convert_tags( um_get_option('profile_desc') );
-				$user_id = um_user('ID');
-				
-				$url = um_user_profile_url();
-				if ( um_profile('cover_photo') ) {
-						$cover_uri = um_get_cover_uri( um_profile('cover_photo'), null );
-				} else if( um_profile('synced_cover_photo') ) {
-						$cover_uri = um_profile('synced_cover_photo');
-			        }else{
-						$cover_uri = um_get_default_cover_uri();
-						
-				}
-				//$cover = um_get_cover_uri( um_profile('cover_photo'), null );
-				$avatar = um_get_avatar_uri( um_profile('profile_photo'), 120 );
-				
-				echo "<div class='more-info-parent' style='background-image:url(".$cover_uri.")'>";
-					echo "<div class='more-info-avatar'><div><img src='" . $avatar . "'  alt='". $user_name ."'></div></div>";
-				echo "</div>";
-				
 				echo "<div>";
 					echo "<p>";
 						echo $user_desc;
 					echo "</p>";
 				echo "</div>";
-
-				um_reset_user();
-				
 				?>
+				<?php if( get_field('piilota_yhteystiedot_') == "no" ): ?>
+                  <div class="beat-job-contact-info">
+                    <h3><?php _e("Yhteys","yhteys"); ?></h3>
+                    <?php
+                    if( get_field('nimi') == "" ){
+                    echo $user_lastname . " " . $user_firstname . "<br />";
+                    }else{
+                      echo get_field('nimi') . "<br />";
+                    }
+
+                    if( get_field('sahkoposti') == "" ){
+                      echo $user_email . "<br />";
+                    }else{
+                      echo get_field('sahkoposti') . "<br />";
+                    }
+
+                    if( get_field('puhelin') == "" ){
+                      echo $user_phone . "<br />";
+                    }else{
+                      echo get_field('puhelin');
+                    }
+                    ?>
+                  </div>
+                  <?php endif; ?>
 
 			</section>
 		</div>

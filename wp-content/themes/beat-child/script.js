@@ -193,6 +193,9 @@ $(document).ready(function(){
 		});	
 		searchFromContent();
 	});
+
+	//add container to default um-forms
+	$('.um.um-account .um-form').addClass('container');
 	  	
 });     
 }(jQuery));

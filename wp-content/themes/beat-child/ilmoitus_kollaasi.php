@@ -148,7 +148,7 @@
                 'meta_query'     => array(array(
                     'key'    => 'haku_loppuu',
                     //'value'  => date('Ymd', strtotime("-1 week")),
-                    'value'  => date('Ymd', strtotime("-1 week")),
+                    'value'  => date('Ymd'),
                     'compare'=> '>=',
                     'type'   => 'NUMERIC'
                 ))
@@ -167,6 +167,12 @@
                 $authorID = get_the_author_meta( 'ID' );
                 um_fetch_user( $authorID );
                 $user_name = get_the_author($authorID);
+
+                $user_address = get_the_author_meta( 'homeaddress' );
+                $user_phone = get_the_author_meta( 'phone' );
+                $user_email = get_the_author_meta( 'email' );
+                $user_firstname = get_the_author_meta( 'first_name' );
+                $user_lastname = get_the_author_meta( 'last_name' );
 
                 $format_in = 'Ymd'; // the format your value is saved in (set in the field options)
                 $format_out = 'd.m.Y'; // the format you want to end up with
@@ -246,19 +252,6 @@
                     <div class="panel-title">
                       <?php echo $salary_type_icon . $branch_type_icon; ?>
                       <button data-sortable="<?php echo $main_branch; ?>" class="title-button one-announcement" role="button" data-toggle="collapse" data-parent="#announcements" href="#announcement-<?php echo $i; ?>" aria-expanded="false" aria-controls="announcement-<?php echo $i; ?>" data-contentid="announcement-<?php echo $i; ?>">
-                        <div class="beat-company-info">
-                          <?php
-                          $avatar = um_get_avatar_uri( um_profile('profile_photo'), 120 );
-      
-                          echo "<div class='more-company-info' style='background-image:url(".$cover_uri.")'>";
-                            echo "<div class='more-company-info-avatar'>";
-                              echo "<div>";
-                                echo "<img src='" . $avatar . "'  alt='". $user_name ."'>";
-                              echo "</div>";
-                            echo "</div>";
-                          echo "</div>";
-                          ?>
-                        </div>
                         <?php
                         $note = "";
                         if( $datediff < 7 && $datediff > 0 ){
@@ -325,24 +318,23 @@
                   </div>
 
                   <?php if( get_field('piilota_yhteystiedot_') == "no" ): ?>
-                  <div>
+                  <div class="beat-job-contact-info">
                     <h3><?php _e("Yhteys","yhteys"); ?></h3>
                     <?php
                     if( get_field('nimi') == "" ){
-                    echo um_user('first_name') . " " . um_user('last_name') . "<br />";
+                    echo $user_lastname . " " . $user_firstname . "<br />";
                     }else{
                       echo get_field('nimi') . "<br />";
-                      
                     }
 
                     if( get_field('sahkoposti') == "" ){
-                      echo um_user('user_email') . "<br />";
+                      echo $user_email . "<br />";
                     }else{
                       echo get_field('sahkoposti') . "<br />";
                     }
 
                     if( get_field('puhelin') == "" ){
-                      echo um_user('phone_number');
+                      echo $user_phone . "<br />";
                     }else{
                       echo get_field('puhelin');
                     }
